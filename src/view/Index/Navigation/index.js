@@ -8,55 +8,24 @@ import List from '../List'
 
 const Stack = createStackNavigator()
 
-import styles from './styles'
-
-
-const SearchBarHeader = () => {
-    return (
-        <View style={styles.input_search}>
-            <EvilIcons
-                name="search"
-                size={22}
-                color="#CDCDCD"
-                style={{ marginRight: 5 }}
-            />
-            <TextInput
-                placeholder="Buscar no Mercado Livre"
-            />
-        </View>
-    );
-};
-
-const optionHeader = ({ navigation }) => ({
+const optionsHeader = ({ navigation })=>({
+    title: "Mercado Livre",
     headerStyle: {
-        backgroundColor: "#ffe600",
-        elevation: 0,
+       backgroundColor: "#ffe600",
     },
     headerTintColor: "#000",
-    headerTitle: () => (<SearchBarHeader />),
-    headerLeft: () => (
+    headerTitle: () => (),
+    headerLeft:()=>(
         <TouchableOpacity
-            style={{ marginLeft: 10 }}
-            onPress={() => navigation.toggleDrawer()}
-            title="Info"
+          style={{marginLeft: 10}}
+          onPress={() => navigation.toggleDrawer()}
+          title="Info"
         >
-            <Feather name="align-left" size={24} color="black" />
+            <Feather name="align-left" size={24} color></Feather>
         </TouchableOpacity>
     ),
-    headerRight: () => (
-        <TouchableOpacity
-            style={{ marginRight: 10 }}
-            onPress={() => Alert.alert("Ops", "The car is still empty!")}
-            title="Info"
-        >
-            <EvilIcons name="cart" size={24} color="#0D0D0D" />
-        </TouchableOpacity>
-    ),
-    headerTitleContainerStyle: {
-        flex: 1,
-    },
-});
-
+    headerRight: () => (),
+})
 
 export default function Navigation() {
     return (
@@ -64,12 +33,7 @@ export default function Navigation() {
             <Stack.Screen
                 component={Main}
                 name="Main"
-                options={optionHeader}
-            />
-            <Stack.Screen
-                component={List}
-                name="List"
-                options={optionHeader}
+                options={optionsHeader}
             />
         </Stack.Navigator>
     );
